@@ -12,7 +12,7 @@ class App extends Component {
             .then(res => res.json())
             .then((stuff) => {
               console.log('WHAT IS stuff',stuff)
-              this.setState({ data: stuff })
+              //this.setState({ data: stuff })
             })
             .catch(err => console.log(err));
     }
