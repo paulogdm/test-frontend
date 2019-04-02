@@ -9,7 +9,7 @@ app.get('/api/book',(req,res) =>{
 	res.json({endpoint:'/HELLO4'})
 });
 
-if (!proccess.env.NOW_ENV) {
+if (!proccess.env.NOW_REGION) {
   app.listen(3001, ()=> console.log('listening on 3001'));
 }
 
