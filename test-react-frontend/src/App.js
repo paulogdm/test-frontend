@@ -9,7 +9,6 @@ class App extends Component {
     componentDidMount() {
         // Call our fetch function below once the component mounts
         this.callBackendAPI()
-            .then(res => res.json())
             .then((stuff) => {
               console.log('WHAT IS stuff',stuff)
               this.setState({ data: stuff })
@@ -20,6 +19,7 @@ class App extends Component {
     callBackendAPI = async () => {
         const response = await fetch('/api/book');
         const body = await response.json();
+        console.log('What is response1',response);
 
         if (response.status !== 200) {
             throw Error(body.message)
