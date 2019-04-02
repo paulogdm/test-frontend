@@ -1,50 +1,57 @@
 {
   "version": 2,
-  "name": "my-react-app",
+  "public": true,
   "builds": [
-    {
-      "src": "package.json",
+    {"src": "test-react-frontend/package.json",
       "use": "@now/static-build",
       "config": {
         "distDir": "build"
       }
+    },
+    {
+      "src": "test-api/index.js",
+      "use": "@now/node"
     }
   ],
   "routes": [
+    {
+      "src": "/api/(.*)",
+    "dest": "/test-api/index.js"
+    },
     {
       "src": "/static/(.*)",
       "headers": {
         "cache-control": "s-maxage=31536000,immutable"
       },
-      "dest": "/static/$1"
+      "dest": "test-react-frontend/static/$1"
     },
     {
       "src": "/favicon.ico",
-      "dest": "/favicon.ico"
+      "dest": "test-react-frontend/favicon.ico"
     },
     {
       "src": "/asset-manifest.json",
-      "dest": "/asset-manifest.json"
+      "dest": "test-react-frontend/asset-manifest.json"
     },
     {
       "src": "/manifest.json",
-      "dest": "/manifest.json"
+      "dest": "test-react-frontend/manifest.json"
     },
     {
       "src": "/precache-manifest.(.*)",
-      "dest": "/precache-manifest.$1"
+      "dest": "test-react-frontend/precache-manifest.$1"
     },
     {
       "src": "/service-worker.js",
       "headers": {
         "cache-control": "s-maxage=0"
       },
-      "dest": "/service-worker.js"
+      "dest": "test-react-frontend/service-worker.js"
     },
     {
       "src": "/(.*)",
       "headers": {"cache-control": "s-maxage=0"},
-      "dest": "/index.html"
+      "dest": "test-react-frontend/index.html"
     }
   ]
 }

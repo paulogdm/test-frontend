@@ -18,7 +18,7 @@ class App extends Component {
     }
 
     callBackendAPI = async () => {
-        const response = await fetch('https://faveupapi-git-develop.arashz.now.sh/book');
+        const response = await fetch('/api/book');
         const body = await response.json();
 
         if (response.status !== 200) {

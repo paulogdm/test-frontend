@@ -1,11 +1,16 @@
 const express = require('express');
 const app = express();
 
-app.get('/',(req,res) =>{
-	res.json({endpoint:'/'})
+app.get('/api',(req,res) =>{
+	res.json({endpoint:'/api'})
 });
 
-app.get('/book',(req,res) =>{
+app.get('/api/book',(req,res) =>{
 	res.json({endpoint:'/HELLO4'})
 });
-app.listen(3001, ()=> console.log('listening on 3001'));
+
+if (!proccess.env.NOW_ENV) {
+  app.listen(3001, ()=> console.log('listening on 3001'));
+}
+
+module.exports  = app
